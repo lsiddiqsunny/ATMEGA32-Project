@@ -1,5 +1,5 @@
 # ATMEGA32-Project
-=================
+-----------------
 ### Project Name
 -----------------
 ### Contributor
