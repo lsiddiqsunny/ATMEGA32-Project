@@ -10,14 +10,14 @@ Nadia Anjum Antara<br>
 -----------------
 ### project Idea (In short)
 -----------------
-An automated tickiting system for matrorail in Bangladesh.<br>
+An automated ticketing system for material in Bangladesh.<br>
 ### Motivation 
 -----------------
-In Bangladesh, people have to buy ticket queued in a long line.This is just waste of valuable time.Moreever if you are in hurry,it may be brother you.This project will make the ticket buying system easier.<br>
+In Bangladesh, people have to buy ticket queued in a long line. This is just waste of valuable time. Moreover, if you are in hurry, it may be brother you. This project will make the ticket buying system easier.<br>
 ### Project Idea (In brief)
 -----------------
 
-In this project we are going to build a ticketing system for Metrorail in our country. Every traveler should have an <b>RFID card</b>. This unique id card will determine the balance and information of the owner. He/ She can refill the balance whenever they want (may be via Bkash or Rocket). <br>
+In this project, we are going to build a ticketing system for Metrorail in our country. Every traveler should have an <b>RFID card</b>. This unique id card will determine the balance and information of the owner. He/ She can refill the balance whenever they want (maybe via Bkash or Rocket). <br>
  
 We maintain travelers’ information in a database. Every Metrorail have a microcontroller-based <b>RFID based checking system</b>. When a traveler comes and shows his RFID card, it checks via <b>WIFI module</b> if he has balance or not. If there is enough balance, he can enter the train. If there is not enough balance, he cannot enter the train before refilling. We send massage via <b>GSM module</b> after every action and (optional for now) anyone can know the position of the train by <b>GPS module</b>.<br>
 ### Required Hardwares
