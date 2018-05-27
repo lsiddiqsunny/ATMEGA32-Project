@@ -40,7 +40,7 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 ### Project Work Status
 -----------------
 1. Send Data from ATMEGA32 to Arduino - Done
-2. Receive Data from Arduino to ATMEGA32
+2. Receive Data from Arduino to ATMEGA32 -Done
 3. Read RFID Tags Data and Send To ATMEGA32
 4. Send RFID Card Data from ATMEGA32 to Arduino
 5. Send Data from Arduino to WIFI Module and to Server

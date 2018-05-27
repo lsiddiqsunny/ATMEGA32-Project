@@ -26,6 +26,7 @@ void loop()
 
                                 receiveddata = Serial.read();//read serial data available
                                 Serial.println((char)receiveddata);
+                                Serial.write(receiveddata);//send received data
                              
                              
                                 
