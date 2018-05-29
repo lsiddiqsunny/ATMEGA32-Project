@@ -51,3 +51,6 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 -----------------
 ### Demonstration Video
 -----------------
+1.<b>Communication between two ATMEGA32</b> <br>
+<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="40" height="40" />
+
