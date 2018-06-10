@@ -1,7 +1,7 @@
 #include <ESP8266WiFi.h>
  
-const char* ssid = "Net Buzz @ Sunny WiFi";
-const char* password = "01817661097 ";
+const char* ssid = "SSID";
+const char* password = "password";
  
 int ledPin = 13; // GPIO13
 WiFiServer server(80);
