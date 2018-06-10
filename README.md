@@ -44,9 +44,8 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 1. Send Data from ATMEGA32 to Arduino - Done
 2. Receive Data from Arduino to ATMEGA32 - Done
 3. Send and Receive Data Between Two ATMEGA32 - Done
-4. Read RFID Tags Data and Send To ATMEGA32
-5. Send RFID Card Data from ATMEGA32 to Arduino
-6. Send Data from Arduino to WIFI Module and to Server
+4. Read RFID data -Done
+5. communicate with server by ESP8266 -Done
 
 
 ### Circuit Diagram
@@ -54,3 +53,4 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 ### Demonstration Video
 -----------------
 1.<a href="https://gifs.com/gif/communicate-between-two-atmega32-qYkw93"><b>Communication between two ATMEGA32</b></a>
+2.<a href="https://gifs.com/gif/esp8266-nodemcu-controlling-led-from-server-APLMV7"><b>Controlling Led from server</b></a>
