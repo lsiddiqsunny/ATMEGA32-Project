@@ -52,5 +52,5 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 -----------------
 ### Demonstration Video
 -----------------
-1.<a href="https://gifs.com/gif/communicate-between-two-atmega32-qYkw93"><b>Communication between two ATMEGA32</b></a>
+1.<a href="https://gifs.com/gif/communicate-between-two-atmega32-qYkw93"><b>Communication between two ATMEGA32</b></a><br>
 2.<a href="https://gifs.com/gif/esp8266-nodemcu-controlling-led-from-server-APLMV7"><b>Controlling Led from server</b></a>
