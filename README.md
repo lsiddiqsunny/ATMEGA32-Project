@@ -46,6 +46,7 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 3. Send and Receive Data Between Two ATMEGA32 - Done
 4. Read RFID data -Done
 5. communicate with server by ESP8266 -Done
+6. Send RFID data to server -Done
 
 
 ### Circuit Diagram

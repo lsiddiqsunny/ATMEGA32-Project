@@ -1,34 +1,33 @@
-unsigned receiveddata =0;
+#include <SoftwareSerial.h>
 
-void setup()
+SoftwareSerial mySerial(10, 11); // RX, TX
+char data[15];
+int i=0;
+void setup() {
+  // Open serial communications and wait for port to open:
+  Serial.begin(57600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
 
-{
 
-                Serial.begin(9600);//serial data rate is set for 19200BPS
+  Serial.println("Goodnight moon!");
 
-                pinMode(0,INPUT);//RXD pin is set for INPUT
-
-                pinMode(1,OUTPUT);
-
-                Serial.println("starting at 9600");
-             //   pinMode(7,OUTPUT);//PIN1,PIN7 are set for output
-
-               
-
+  // set the data rate for the SoftwareSerial port
+  mySerial.begin(9600);
+  mySerial.println("Hello, world?");
+  i=0;
 }
 
-void loop()
-
-{
-               //  
-                if (Serial.available() > 0){ //if data received is available
-                                receiveddata = Serial.read();//read serial data available
-                                Serial.println((char)receiveddata);
-                               // Serial.write(receiveddata);//send received data
-                             
-                             
-                                
-
-                }
-
+void loop() { // run over and over
+  if (mySerial.available()) {
+    data[i]=mySerial.read();
+    i++;
+  }
+  if(i==14){
+    data[13]='\n';
+    data[14]='\0';
+    Serial.write(data);
+    i=0;
+  }
 }
