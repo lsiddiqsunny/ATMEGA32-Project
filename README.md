@@ -47,7 +47,7 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 4. Read RFID data -Done
 5. communicate with server by ESP8266 -Done
 6. Send RFID data to server -Done
-
+7. Connect to data base , modify  and take acknowledgement -Done
 
 ### Circuit Diagram
 -----------------
