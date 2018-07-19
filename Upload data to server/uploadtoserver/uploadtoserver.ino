@@ -11,11 +11,12 @@ const char *ssid = "Net Buzz @ Sunny WiFi";  //ENTER YOUR WIFI SETTINGS
 const char *password = "01817661097 ";
 
 //Web/Server address to read/write from 
-const char *host = "192.168.0.102";   
+const char *host = "192.168.0.103";   
 
 SoftwareSerial mySerial(12, 13); // RX, TX
 char data[15];
 int i=0;
+int flag=0;
 
 void setup() {
   delay(1000);
@@ -41,7 +42,6 @@ void setup() {
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());  //IP address assigned to your ESP
   mySerial.begin(9600);
-  mySerial.println("Hello, world?");
   i=0;
 }
 
@@ -49,10 +49,9 @@ void setup() {
 //                    Main Program Loop
 //=======================================================================
 void loop() {
-
   if (mySerial.available()) {
     data[i]=mySerial.read();
-    
+    Serial.write(data[i]);
     i++;
     if(i==1 && data[0]!=2){
       i--;
@@ -66,27 +65,40 @@ void loop() {
     data[12]='\0';
    // data[13]='\0';
    
-   i=0;
+  i=0;
   HTTPClient http;    //Declare object of class HTTPClient
 
   String postData;
-  String link=String("http://192.168.0.102/Test/postdemo.php?id=")+data;
+  String link=String("http://192.168.0.103/Test/postdemo.php?id=")+data;
   
   http.begin(link);              //Specify request destination
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");    //Specify content-type header
 
   int httpCode = http.GET();   //Send the request
   String payload = http.getString();    //Get the response payload
-
- // Serial.println(httpCode);   //Print HTTP return code
+  if(payload.length()==0){
+   for(int i=0;i<payload.length();i++)
+  mySerial.write(payload[i]);    //Print request response payload
+     mySerial.println("\nNOT A VALID CARD.\nTRY AGAIN.\n");    
+  }
+  if(payload.length()==12){
+    for(int i=0;i<payload.length();i++){
+  mySerial.write(payload[i]);    //Print request response payload
+    delay(10);
+    }
   Serial.println(payload);    //Print request response payload
+  }else{
+      for(int i=0;i<payload.length();i++)
+  mySerial.write(payload[i]);    //Print request response payload 
+       Serial.println("\nNOT A VALID CARD.\nTRY AGAIN.\n");    
 
+  }
   http.end();  //Close connection
   data[0]='\0';
-  delay(10000);  //Post Data at every 10 seconds
+  delay(5000);  //Post Data at every 10 seconds
   }
-  Serial.println("No card till now\n");
-  delay(10);
+  //Serial.println("No card till now\n");
+ // delay(10);
  
   
 }

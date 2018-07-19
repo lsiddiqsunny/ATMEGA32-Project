@@ -1,63 +1,60 @@
-/*
- * MasterATMEGA32.c
- *
- * Created: 29-May-18 12:26:17 PM
- * Author : Latif Siddiq Suuny
- */ 
+#ifndef F_CPU
+#define F_CPU 1000000UL // 16 MHz clock speed
+#endif
+#define D4 eS_PORTD4
+#define D5 eS_PORTD5
+#define D6 eS_PORTD6
+#define D7 eS_PORTD7
+#define RS eS_PORTC6
+#define EN eS_PORTC7
 
 #include <avr/io.h>
- #define F_CPU 1000000UL
+#include <util/delay.h>
+#include "lcd.h" //Can be download from the bottom of this article
+char str[15];
+	int i=0;
+void URAT_SETUP(){
+	
+	UCSRA = 0b00000010;  // Single speed
+	UCSRB = 0b00011000;  // Enable Tx and Rx, polling
+	UCSRC = 0b10000110;  // Asynchronous mode, no parity, 1 stop bit,8 data bits
+	
+	UBRRH = 0x00;
+	UBRRL = 12; // Baud rate 1200bps, assuming 1MHz clock
 
- //telling controller crystal frequency attached
+}
 
- #include <util/delay.h>
-
- //header to enable delay function in program
-
- void URAT_SETUP(){
-	 
-	 UCSRA = 0b00000000;  // Single speed
-	 UCSRB = 0b00011000;  // Enable Tx and Rx, polling
-	 UCSRC = 0b10000110;  // Asynchronous mode, no parity, 1 stop bit,8 data bits
-	 
-	 UBRRH = 0x00;
-	 UBRRL = 0x33; // Baud rate 1200bps, assuming 1MHz clock
-
- }
-
- char URAT_RECEIVE(){
-	 while ((UCSRA & (1<<RXC)) == 0x00);// Wait until RXC flag is set to logic 1
-	 unsigned char ch= UDR;
-	 return ch;
- }
-
- void URAT_SEND(char ch){
-	 while (! (UCSRA & (1 << UDRE)) );// wait until UDRE flag is set to logic 1
-	 UDR=ch;
-	 return ;
- }
+char URAT_RECEIVE(){
+	while ((UCSRA & (1<<RXC)) == 0x00);// Wait until RXC flag is set to logic 1
+	  char ch= UDR;
+	 str[i]=ch;
+	return ch;
+}
 
 
 int main(void)
 {
-    /* Replace with your application code */
-	DDRB=0x00;
-	DDRA=0xFF;
+	DDRD = 0xFF;
+	DDRC = 0xFF;
 	URAT_SETUP();
-	char ch= 0b11110000;
-    while (1) 
-    {
-		if(PINB&1){
-		URAT_SEND(ch);
-		_delay_ms(200);
+	Lcd4_Init();
+	Lcd4_Set_Cursor(1,1);
+	Lcd4_Clear();
+
+	while(1)
+	{	
+		URAT_RECEIVE();
+		i++;
+		if(i==12){
+		str[i]='\0';
+		Lcd4_Write_String(str);
+		i=0; 
+		_delay_ms(5000);
+		Lcd4_Set_Cursor(1,1);
+		Lcd4_Clear();
+		Lcd4_Set_Cursor(1,1);
+		str[i]='\0';
+		
 		}
-		
-		/*if(URAT_RECEIVE()==ch){
-			PORTA=~PORTA;
-			_delay_ms(200);
-		}*/
-		
-
-    }
+	}
 }
-
