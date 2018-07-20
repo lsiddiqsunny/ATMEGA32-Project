@@ -28,9 +28,18 @@ char URAT_RECEIVE(){
 	while ((UCSRA & (1<<RXC)) == 0x00);// Wait until RXC flag is set to logic 1
 	  char ch= UDR;
 	 str[i]=ch;
+	// Lcd4_Write_Char(ch);
 	return ch;
 }
-
+void invalid(){
+Lcd4_Set_Cursor(1,1);
+Lcd4_Clear();
+Lcd4_Write_String("Invalid card!");
+	_delay_ms(1000);
+	Lcd4_Set_Cursor(1,1);
+	Lcd4_Clear();
+	Lcd4_Write_String("Enter card,pls!");
+}
 
 int main(void)
 {
@@ -40,21 +49,54 @@ int main(void)
 	Lcd4_Init();
 	Lcd4_Set_Cursor(1,1);
 	Lcd4_Clear();
-
+	Lcd4_Write_String("Enter card,pls!");
+	int ok=0;
 	while(1)
-	{	
-		URAT_RECEIVE();
-		i++;
+	{	if(ok==0){
+		if(URAT_RECEIVE()=='n'){
+		if(URAT_RECEIVE()=='u'){
+		if(URAT_RECEIVE()=='m'){
+			ok=1;i=0;
+			
+		}else{
+		invalid();
+	
+	}
+		}
+		else{
+		invalid();
+		}
+		}
+		
+		/*invalid();
+		_delay_ms(5000);
+		Lcd4_Set_Cursor(1,1);
+		Lcd4_Clear();
+		Lcd4_Write_String("Enter card,pls!");*/
+		}
+		if(ok){
+			URAT_RECEIVE();
+			i++;
+		}
+		
 		if(i==12){
 		str[i]='\0';
-		Lcd4_Write_String(str);
+		Lcd4_Set_Cursor(1,1);
+		Lcd4_Clear();
+		if(str[0]=='0'){
+		Lcd4_Write_String("Not enough bal!");
+		}
+		else{
+		Lcd4_Write_String("Ticket confirmed!");
+		}
+		//Lcd4_Write_String(str);
 		i=0; 
 		_delay_ms(5000);
 		Lcd4_Set_Cursor(1,1);
 		Lcd4_Clear();
-		Lcd4_Set_Cursor(1,1);
+		Lcd4_Write_String("Enter card,pls!");
 		str[i]='\0';
-		
+		ok=0;
 		}
 	}
 }

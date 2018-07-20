@@ -11,7 +11,7 @@ const char *ssid = "Net Buzz @ Sunny WiFi";  //ENTER YOUR WIFI SETTINGS
 const char *password = "01817661097 ";
 
 //Web/Server address to read/write from 
-const char *host = "192.168.0.103";   
+const char *host = "192.168.0.104";   
 
 SoftwareSerial mySerial(12, 13); // RX, TX
 char data[15];
@@ -69,28 +69,31 @@ void loop() {
   HTTPClient http;    //Declare object of class HTTPClient
 
   String postData;
-  String link=String("http://192.168.0.103/Test/postdemo.php?id=")+data;
+  String link=String("http://192.168.0.104/Test/postdemo.php?id=")+data;
   
   http.begin(link);              //Specify request destination
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");    //Specify content-type header
 
   int httpCode = http.GET();   //Send the request
   String payload = http.getString();    //Get the response payload
+ // Serial.println(payload); 
   if(payload.length()==0){
-   for(int i=0;i<payload.length();i++)
-  mySerial.write(payload[i]);    //Print request response payload
+  mySerial.write('n');    //Print request response payload
+  mySerial.write('o');  
+  mySerial.write('t');  
      mySerial.println("\nNOT A VALID CARD.\nTRY AGAIN.\n");    
   }
-  if(payload.length()==12){
+  if(payload.length()==15){
     for(int i=0;i<payload.length();i++){
   mySerial.write(payload[i]);    //Print request response payload
     delay(10);
     }
   Serial.println(payload);    //Print request response payload
   }else{
-      for(int i=0;i<payload.length();i++)
-  mySerial.write(payload[i]);    //Print request response payload 
-       Serial.println("\nNOT A VALID CARD.\nTRY AGAIN.\n");    
+  mySerial.write('n');    //Print request response payload
+  mySerial.write('o');  
+  mySerial.write('t');  
+  Serial.println("\nNOT A VALID CARD.\nTRY AGAIN.\n");    
 
   }
   http.end();  //Close connection
