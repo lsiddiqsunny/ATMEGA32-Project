@@ -48,7 +48,8 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 7. Connect to data base , modify  and take acknowledgement -Done
 8. Send acknowledgement to ATMEGA32 -Done
 9. Show acknowledgement to LCD Display -Done
-10. Send AT commands to SIM900A -Pending
+10. Send AT commands to SIM900A from Arduino -Done
+11. Send AT commands to SIM900A from ATMEGA -Pending for power supply
 
 ### Circuit Diagram
 -----------------

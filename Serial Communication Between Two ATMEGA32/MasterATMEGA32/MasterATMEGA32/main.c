@@ -59,7 +59,7 @@ int main(void)
 			ok=1;i=0;
 			
 		}else{
-		invalid();
+		//invalid();
 	
 	}
 		}

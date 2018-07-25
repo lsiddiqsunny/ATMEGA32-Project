@@ -1,33 +1,33 @@
 
-MasterATMEGA32.elf:     file format elf32-avr
+Sendmssg.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000068a  00000000  00000000  00000094  2**1
+  0 .text         0000089c  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000040  00800060  0000068a  0000071e  2**0
+  1 .data         0000007e  00800060  0000089c  00000930  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000011  008000a0  008000a0  0000075e  2**0
+  2 .bss          00000027  008000de  008000de  000009ae  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  0000075e  2**0
+  3 .comment      00000030  00000000  00000000  000009ae  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000790  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000009e0  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000d0  00000000  00000000  000007cc  2**0
+  5 .debug_aranges 000000d8  00000000  00000000  00000a1c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000017ce  00000000  00000000  0000089c  2**0
+  6 .debug_info   00001c06  00000000  00000000  00000af4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000006e6  00000000  00000000  0000206a  2**0
+  7 .debug_abbrev 000006f7  00000000  00000000  000026fa  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000b35  00000000  00000000  00002750  2**0
+  8 .debug_line   00000cd0  00000000  00000000  00002df1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001d4  00000000  00000000  00003288  2**2
+  9 .debug_frame  000001e4  00000000  00000000  00003ac4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000049e  00000000  00000000  0000345c  2**0
+ 10 .debug_str    000004a8  00000000  00000000  00003ca8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000ba4  00000000  00000000  000038fa  2**0
+ 11 .debug_loc    00000ef6  00000000  00000000  00004150  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000c0  00000000  00000000  0000449e  2**0
+ 12 .debug_ranges 000000c8  00000000  00000000  00005046  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -67,18 +67,18 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	ea e8       	ldi	r30, 0x8A	; 138
-  68:	f6 e0       	ldi	r31, 0x06	; 6
+  66:	ec e9       	ldi	r30, 0x9C	; 156
+  68:	f8 e0       	ldi	r31, 0x08	; 8
   6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
   6c:	05 90       	lpm	r0, Z+
   6e:	0d 92       	st	X+, r0
-  70:	a0 3a       	cpi	r26, 0xA0	; 160
+  70:	ae 3d       	cpi	r26, 0xDE	; 222
   72:	b1 07       	cpc	r27, r17
   74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
 
 00000076 <__do_clear_bss>:
-  76:	20 e0       	ldi	r18, 0x00	; 0
-  78:	a0 ea       	ldi	r26, 0xA0	; 160
+  76:	21 e0       	ldi	r18, 0x01	; 1
+  78:	ae ed       	ldi	r26, 0xDE	; 222
   7a:	b0 e0       	ldi	r27, 0x00	; 0
   7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
 
@@ -86,11 +86,11 @@ Disassembly of section .text:
   7e:	1d 92       	st	X+, r1
 
 00000080 <.do_clear_bss_start>:
-  80:	a1 3b       	cpi	r26, 0xB1	; 177
+  80:	a5 30       	cpi	r26, 0x05	; 5
   82:	b2 07       	cpc	r27, r18
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
-  86:	0e 94 cb 02 	call	0x596	; 0x596 <main>
-  8a:	0c 94 43 03 	jmp	0x686	; 0x686 <_exit>
+  86:	0e 94 cf 02 	call	0x59e	; 0x59e <main>
+  8a:	0c 94 4c 04 	jmp	0x898	; 0x898 <_exit>
 
 0000008e <__bad_interrupt>:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -672,9 +672,9 @@ void Lcd4_Shift_Left()
  52e:	08 95       	ret
 
 00000530 <URAT_SETUP>:
-#include "lcd.h" //Can be download from the bottom of this article
-char str[15];
-	int i=0;
+unsigned char cmd5[]={"Ticket confirmed."};
+unsigned char cmd6[]={"Not enough balance."};
+
 void URAT_SETUP(){
 	
 	UCSRA = 0b00000010;  // Single speed
@@ -698,16 +698,17 @@ void URAT_SETUP(){
 
 }
 
+
 char URAT_RECEIVE(){
 	while ((UCSRA & (1<<RXC)) == 0x00);// Wait until RXC flag is set to logic 1
  544:	5f 9b       	sbis	0x0b, 7	; 11
  546:	fe cf       	rjmp	.-4      	; 0x544 <URAT_RECEIVE>
-	  char ch= UDR;
+	char ch= UDR;
  548:	8c b1       	in	r24, 0x0c	; 12
-	 str[i]=ch;
- 54a:	e0 91 a0 00 	lds	r30, 0x00A0	; 0x8000a0 <__data_end>
- 54e:	f0 91 a1 00 	lds	r31, 0x00A1	; 0x8000a1 <__data_end+0x1>
- 552:	ee 55       	subi	r30, 0x5E	; 94
+	str[i]=ch;
+ 54a:	e0 91 de 00 	lds	r30, 0x00DE	; 0x8000de <__data_end>
+ 54e:	f0 91 df 00 	lds	r31, 0x00DF	; 0x8000df <__data_end+0x1>
+ 552:	ea 50       	subi	r30, 0x0A	; 10
  554:	ff 4f       	sbci	r31, 0xFF	; 255
  556:	80 83       	st	Z, r24
 	// Lcd4_Write_Char(ch);
@@ -717,14 +718,14 @@ char URAT_RECEIVE(){
 
 0000055a <invalid>:
 void invalid(){
-Lcd4_Set_Cursor(1,1);
+	Lcd4_Set_Cursor(1,1);
  55a:	61 e0       	ldi	r22, 0x01	; 1
  55c:	81 e0       	ldi	r24, 0x01	; 1
  55e:	0e 94 f5 01 	call	0x3ea	; 0x3ea <Lcd4_Set_Cursor>
-Lcd4_Clear();
+	Lcd4_Clear();
  562:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Lcd4_Clear>
-Lcd4_Write_String("Invalid card!");
- 566:	80 e6       	ldi	r24, 0x60	; 96
+	Lcd4_Write_String("Invalid card!");
+ 566:	8d e9       	ldi	r24, 0x9D	; 157
  568:	90 e0       	ldi	r25, 0x00	; 0
  56a:	0e 94 89 02 	call	0x512	; 0x512 <Lcd4_Write_String>
 	#else
@@ -750,186 +751,519 @@ Lcd4_Write_String("Invalid card!");
 	Lcd4_Clear();
  588:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Lcd4_Clear>
 	Lcd4_Write_String("Enter card,pls!");
- 58c:	8e e6       	ldi	r24, 0x6E	; 110
+ 58c:	8b ea       	ldi	r24, 0xAB	; 171
  58e:	90 e0       	ldi	r25, 0x00	; 0
  590:	0e 94 89 02 	call	0x512	; 0x512 <Lcd4_Write_String>
  594:	08 95       	ret
 
-00000596 <main>:
+00000596 <URAT_SEND>:
 }
 
+
+void URAT_SEND(char ch){
+	while (! (UCSRA & (1 << UDRE)) );// wait until UDRE flag is set to logic 1
+ 596:	5d 9b       	sbis	0x0b, 5	; 11
+ 598:	fe cf       	rjmp	.-4      	; 0x596 <URAT_SEND>
+	UDR=ch;
+ 59a:	8c b9       	out	0x0c, r24	; 12
+ 59c:	08 95       	ret
+
+0000059e <main>:
+	return ;
+}
 int main(void)
 {
 	DDRD = 0xFF;
- 596:	8f ef       	ldi	r24, 0xFF	; 255
- 598:	81 bb       	out	0x11, r24	; 17
+ 59e:	8f ef       	ldi	r24, 0xFF	; 255
+ 5a0:	81 bb       	out	0x11, r24	; 17
 	DDRC = 0xFF;
- 59a:	84 bb       	out	0x14, r24	; 20
+ 5a2:	84 bb       	out	0x14, r24	; 20
 	URAT_SETUP();
- 59c:	0e 94 98 02 	call	0x530	; 0x530 <URAT_SETUP>
+ 5a4:	0e 94 98 02 	call	0x530	; 0x530 <URAT_SETUP>
 	Lcd4_Init();
- 5a0:	0e 94 12 02 	call	0x424	; 0x424 <Lcd4_Init>
+ 5a8:	0e 94 12 02 	call	0x424	; 0x424 <Lcd4_Init>
 	Lcd4_Set_Cursor(1,1);
- 5a4:	61 e0       	ldi	r22, 0x01	; 1
- 5a6:	81 e0       	ldi	r24, 0x01	; 1
- 5a8:	0e 94 f5 01 	call	0x3ea	; 0x3ea <Lcd4_Set_Cursor>
+ 5ac:	61 e0       	ldi	r22, 0x01	; 1
+ 5ae:	81 e0       	ldi	r24, 0x01	; 1
+ 5b0:	0e 94 f5 01 	call	0x3ea	; 0x3ea <Lcd4_Set_Cursor>
 	Lcd4_Clear();
- 5ac:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Lcd4_Clear>
+ 5b4:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Lcd4_Clear>
 	Lcd4_Write_String("Enter card,pls!");
- 5b0:	8e e6       	ldi	r24, 0x6E	; 110
- 5b2:	90 e0       	ldi	r25, 0x00	; 0
- 5b4:	0e 94 89 02 	call	0x512	; 0x512 <Lcd4_Write_String>
-	Lcd4_Clear();
-	Lcd4_Write_String("Enter card,pls!");
+ 5b8:	8b ea       	ldi	r24, 0xAB	; 171
+ 5ba:	90 e0       	ldi	r25, 0x00	; 0
+ 5bc:	0e 94 89 02 	call	0x512	; 0x512 <Lcd4_Write_String>
+	while (! (UCSRA & (1 << UDRE)) );// wait until UDRE flag is set to logic 1
+	UDR=ch;
+	return ;
 }
-
 int main(void)
 {
- 5b8:	e1 2c       	mov	r14, r1
- 5ba:	f1 2c       	mov	r15, r1
+ 5c0:	a1 2c       	mov	r10, r1
+ 5c2:	b1 2c       	mov	r11, r1
 	while(1)
 	{	if(ok==0){
 		if(URAT_RECEIVE()=='n'){
 		if(URAT_RECEIVE()=='u'){
 		if(URAT_RECEIVE()=='m'){
 			ok=1;i=0;
- 5bc:	cc 24       	eor	r12, r12
- 5be:	c3 94       	inc	r12
- 5c0:	d1 2c       	mov	r13, r1
+ 5c4:	88 24       	eor	r8, r8
+ 5c6:	83 94       	inc	r8
+ 5c8:	91 2c       	mov	r9, r1
 			URAT_RECEIVE();
 			i++;
 		}
 		
 		if(i==12){
 		str[i]='\0';
- 5c2:	02 ea       	ldi	r16, 0xA2	; 162
- 5c4:	10 e0       	ldi	r17, 0x00	; 0
-	Lcd4_Clear();
-	Lcd4_Write_String("Enter card,pls!");
+ 5ca:	06 ef       	ldi	r16, 0xF6	; 246
+ 5cc:	10 e0       	ldi	r17, 0x00	; 0
+ 5ce:	c2 e0       	ldi	r28, 0x02	; 2
+ 5d0:	d1 e0       	ldi	r29, 0x01	; 1
+			Lcd4_Write_String("Ticket confirmed!");
+		}
+		for(j=1;j<12;j++){
+			cmd4[j-1]=str[j];
+		}
+		cmd4[11]='\0';
+ 5d2:	0f 2e       	mov	r0, r31
+ 5d4:	f2 ee       	ldi	r31, 0xE2	; 226
+ 5d6:	ef 2e       	mov	r14, r31
+ 5d8:	f0 e0       	ldi	r31, 0x00	; 0
+ 5da:	ff 2e       	mov	r15, r31
+ 5dc:	f0 2d       	mov	r31, r0
+	while (! (UCSRA & (1 << UDRE)) );// wait until UDRE flag is set to logic 1
+	UDR=ch;
+	return ;
 }
-
 int main(void)
 {
- 5c6:	ce 2d       	mov	r28, r14
- 5c8:	df 2d       	mov	r29, r15
+ 5de:	ca 2c       	mov	r12, r10
+ 5e0:	db 2c       	mov	r13, r11
 	Lcd4_Set_Cursor(1,1);
 	Lcd4_Clear();
 	Lcd4_Write_String("Enter card,pls!");
 	int ok=0;
 	while(1)
 	{	if(ok==0){
- 5ca:	20 97       	sbiw	r28, 0x00	; 0
- 5cc:	09 f0       	breq	.+2      	; 0x5d0 <main+0x3a>
- 5ce:	4f c0       	rjmp	.+158    	; 0x66e <main+0xd8>
+ 5e2:	c1 14       	cp	r12, r1
+ 5e4:	d1 04       	cpc	r13, r1
+ 5e6:	09 f0       	breq	.+2      	; 0x5ea <main+0x4c>
+ 5e8:	42 c1       	rjmp	.+644    	; 0x86e <__stack+0xf>
 		if(URAT_RECEIVE()=='n'){
- 5d0:	0e 94 a2 02 	call	0x544	; 0x544 <URAT_RECEIVE>
- 5d4:	8e 36       	cpi	r24, 0x6E	; 110
- 5d6:	89 f4       	brne	.+34     	; 0x5fa <main+0x64>
+ 5ea:	0e 94 a2 02 	call	0x544	; 0x544 <URAT_RECEIVE>
+ 5ee:	8e 36       	cpi	r24, 0x6E	; 110
+ 5f0:	89 f4       	brne	.+34     	; 0x614 <main+0x76>
 		if(URAT_RECEIVE()=='u'){
- 5d8:	0e 94 a2 02 	call	0x544	; 0x544 <URAT_RECEIVE>
- 5dc:	85 37       	cpi	r24, 0x75	; 117
- 5de:	59 f4       	brne	.+22     	; 0x5f6 <main+0x60>
+ 5f2:	0e 94 a2 02 	call	0x544	; 0x544 <URAT_RECEIVE>
+ 5f6:	85 37       	cpi	r24, 0x75	; 117
+ 5f8:	59 f4       	brne	.+22     	; 0x610 <main+0x72>
 		if(URAT_RECEIVE()=='m'){
- 5e0:	0e 94 a2 02 	call	0x544	; 0x544 <URAT_RECEIVE>
- 5e4:	8d 36       	cpi	r24, 0x6D	; 109
- 5e6:	49 f4       	brne	.+18     	; 0x5fa <main+0x64>
+ 5fa:	0e 94 a2 02 	call	0x544	; 0x544 <URAT_RECEIVE>
+ 5fe:	8d 36       	cpi	r24, 0x6D	; 109
+ 600:	49 f4       	brne	.+18     	; 0x614 <main+0x76>
 			ok=1;i=0;
- 5e8:	e0 92 a0 00 	sts	0x00A0, r14	; 0x8000a0 <__data_end>
- 5ec:	f0 92 a1 00 	sts	0x00A1, r15	; 0x8000a1 <__data_end+0x1>
- 5f0:	cc 2d       	mov	r28, r12
- 5f2:	dd 2d       	mov	r29, r13
- 5f4:	3c c0       	rjmp	.+120    	; 0x66e <main+0xd8>
+ 602:	a0 92 de 00 	sts	0x00DE, r10	; 0x8000de <__data_end>
+ 606:	b0 92 df 00 	sts	0x00DF, r11	; 0x8000df <__data_end+0x1>
+ 60a:	c8 2c       	mov	r12, r8
+ 60c:	d9 2c       	mov	r13, r9
+ 60e:	2f c1       	rjmp	.+606    	; 0x86e <__stack+0xf>
 		//invalid();
 	
 	}
 		}
 		else{
 		invalid();
- 5f6:	0e 94 ad 02 	call	0x55a	; 0x55a <invalid>
+ 610:	0e 94 ad 02 	call	0x55a	; 0x55a <invalid>
 		if(ok){
 			URAT_RECEIVE();
 			i++;
 		}
 		
 		if(i==12){
- 5fa:	80 91 a0 00 	lds	r24, 0x00A0	; 0x8000a0 <__data_end>
- 5fe:	90 91 a1 00 	lds	r25, 0x00A1	; 0x8000a1 <__data_end+0x1>
- 602:	0c 97       	sbiw	r24, 0x0c	; 12
- 604:	11 f7       	brne	.-60     	; 0x5ca <main+0x34>
+ 614:	80 91 de 00 	lds	r24, 0x00DE	; 0x8000de <__data_end>
+ 618:	90 91 df 00 	lds	r25, 0x00DF	; 0x8000df <__data_end+0x1>
+ 61c:	0c 97       	sbiw	r24, 0x0c	; 12
+ 61e:	09 f7       	brne	.-62     	; 0x5e2 <main+0x44>
 		str[i]='\0';
- 606:	f8 01       	movw	r30, r16
- 608:	14 86       	std	Z+12, r1	; 0x0c
-		Lcd4_Set_Cursor(1,1);
- 60a:	61 e0       	ldi	r22, 0x01	; 1
- 60c:	81 e0       	ldi	r24, 0x01	; 1
- 60e:	0e 94 f5 01 	call	0x3ea	; 0x3ea <Lcd4_Set_Cursor>
-		Lcd4_Clear();
- 612:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Lcd4_Clear>
+ 620:	f8 01       	movw	r30, r16
+ 622:	14 86       	std	Z+12, r1	; 0x0c
+			Lcd4_Set_Cursor(1,1);
+ 624:	61 e0       	ldi	r22, 0x01	; 1
+ 626:	81 e0       	ldi	r24, 0x01	; 1
+ 628:	0e 94 f5 01 	call	0x3ea	; 0x3ea <Lcd4_Set_Cursor>
+			Lcd4_Clear();
+ 62c:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Lcd4_Clear>
 		if(str[0]=='0'){
- 616:	f8 01       	movw	r30, r16
- 618:	80 81       	ld	r24, Z
- 61a:	80 33       	cpi	r24, 0x30	; 48
- 61c:	29 f4       	brne	.+10     	; 0x628 <main+0x92>
-		Lcd4_Write_String("Not enough bal!");
- 61e:	8e e7       	ldi	r24, 0x7E	; 126
- 620:	90 e0       	ldi	r25, 0x00	; 0
- 622:	0e 94 89 02 	call	0x512	; 0x512 <Lcd4_Write_String>
- 626:	04 c0       	rjmp	.+8      	; 0x630 <main+0x9a>
+ 630:	f8 01       	movw	r30, r16
+ 632:	80 81       	ld	r24, Z
+ 634:	80 33       	cpi	r24, 0x30	; 48
+ 636:	29 f4       	brne	.+10     	; 0x642 <main+0xa4>
+			Lcd4_Write_String("Not enough bal!");}
+ 638:	8b eb       	ldi	r24, 0xBB	; 187
+ 63a:	90 e0       	ldi	r25, 0x00	; 0
+ 63c:	0e 94 89 02 	call	0x512	; 0x512 <Lcd4_Write_String>
+ 640:	04 c0       	rjmp	.+8      	; 0x64a <main+0xac>
+		else{
+			Lcd4_Write_String("Ticket confirmed!");
+ 642:	8b ec       	ldi	r24, 0xCB	; 203
+ 644:	90 e0       	ldi	r25, 0x00	; 0
+ 646:	0e 94 89 02 	call	0x512	; 0x512 <Lcd4_Write_String>
+ 64a:	e7 ef       	ldi	r30, 0xF7	; 247
+ 64c:	f0 e0       	ldi	r31, 0x00	; 0
+ 64e:	a2 ee       	ldi	r26, 0xE2	; 226
+ 650:	b0 e0       	ldi	r27, 0x00	; 0
+		}
+		for(j=1;j<12;j++){
+			cmd4[j-1]=str[j];
+ 652:	81 91       	ld	r24, Z+
+ 654:	8d 93       	st	X+, r24
+		if(str[0]=='0'){
+			Lcd4_Write_String("Not enough bal!");}
+		else{
+			Lcd4_Write_String("Ticket confirmed!");
+		}
+		for(j=1;j<12;j++){
+ 656:	ec 17       	cp	r30, r28
+ 658:	fd 07       	cpc	r31, r29
+ 65a:	d9 f7       	brne	.-10     	; 0x652 <main+0xb4>
+ 65c:	14 c1       	rjmp	.+552    	; 0x886 <__stack+0x27>
+			cmd4[j-1]=str[j];
+		}
+		cmd4[11]='\0';
+		for(j=0;j<2;j++){
+			URAT_SEND(cmd1[j]);
+ 65e:	fc 01       	movw	r30, r24
+ 660:	e6 56       	subi	r30, 0x66	; 102
+ 662:	ff 4f       	sbci	r31, 0xFF	; 255
+ 664:	80 81       	ld	r24, Z
+ 666:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 66a:	83 ed       	ldi	r24, 0xD3	; 211
+ 66c:	90 e3       	ldi	r25, 0x30	; 48
+ 66e:	01 97       	sbiw	r24, 0x01	; 1
+ 670:	f1 f7       	brne	.-4      	; 0x66e <main+0xd0>
+ 672:	00 c0       	rjmp	.+0      	; 0x674 <main+0xd6>
+ 674:	00 00       	nop
+		}
+		for(j=1;j<12;j++){
+			cmd4[j-1]=str[j];
+		}
+		cmd4[11]='\0';
+		for(j=0;j<2;j++){
+ 676:	80 91 e0 00 	lds	r24, 0x00E0	; 0x8000e0 <j>
+ 67a:	90 91 e1 00 	lds	r25, 0x00E1	; 0x8000e1 <j+0x1>
+ 67e:	01 96       	adiw	r24, 0x01	; 1
+ 680:	90 93 e1 00 	sts	0x00E1, r25	; 0x8000e1 <j+0x1>
+ 684:	80 93 e0 00 	sts	0x00E0, r24	; 0x8000e0 <j>
+ 688:	82 30       	cpi	r24, 0x02	; 2
+ 68a:	91 05       	cpc	r25, r1
+ 68c:	44 f3       	brlt	.-48     	; 0x65e <main+0xc0>
+			URAT_SEND(cmd1[j]);
+			_delay_ms(50);
+		}
+		URAT_SEND('\r');
+ 68e:	8d e0       	ldi	r24, 0x0D	; 13
+ 690:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 694:	e7 ea       	ldi	r30, 0xA7	; 167
+ 696:	f1 e6       	ldi	r31, 0x61	; 97
+ 698:	31 97       	sbiw	r30, 0x01	; 1
+ 69a:	f1 f7       	brne	.-4      	; 0x698 <main+0xfa>
+ 69c:	00 c0       	rjmp	.+0      	; 0x69e <main+0x100>
+ 69e:	00 00       	nop
+		_delay_ms(100);
+		for(j=0;j<9;j++){
+ 6a0:	a0 92 e0 00 	sts	0x00E0, r10	; 0x8000e0 <j>
+ 6a4:	b0 92 e1 00 	sts	0x00E1, r11	; 0x8000e1 <j+0x1>
+ 6a8:	8a 2d       	mov	r24, r10
+ 6aa:	9b 2d       	mov	r25, r11
+			URAT_SEND(cmd2[j]);
+ 6ac:	fc 01       	movw	r30, r24
+ 6ae:	e0 57       	subi	r30, 0x70	; 112
+ 6b0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 6b2:	80 81       	ld	r24, Z
+ 6b4:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 6b8:	83 ed       	ldi	r24, 0xD3	; 211
+ 6ba:	90 e3       	ldi	r25, 0x30	; 48
+ 6bc:	01 97       	sbiw	r24, 0x01	; 1
+ 6be:	f1 f7       	brne	.-4      	; 0x6bc <main+0x11e>
+ 6c0:	00 c0       	rjmp	.+0      	; 0x6c2 <main+0x124>
+ 6c2:	00 00       	nop
+			URAT_SEND(cmd1[j]);
+			_delay_ms(50);
+		}
+		URAT_SEND('\r');
+		_delay_ms(100);
+		for(j=0;j<9;j++){
+ 6c4:	80 91 e0 00 	lds	r24, 0x00E0	; 0x8000e0 <j>
+ 6c8:	90 91 e1 00 	lds	r25, 0x00E1	; 0x8000e1 <j+0x1>
+ 6cc:	01 96       	adiw	r24, 0x01	; 1
+ 6ce:	90 93 e1 00 	sts	0x00E1, r25	; 0x8000e1 <j+0x1>
+ 6d2:	80 93 e0 00 	sts	0x00E0, r24	; 0x8000e0 <j>
+ 6d6:	89 30       	cpi	r24, 0x09	; 9
+ 6d8:	91 05       	cpc	r25, r1
+ 6da:	44 f3       	brlt	.-48     	; 0x6ac <main+0x10e>
+			URAT_SEND(cmd2[j]);
+			_delay_ms(50);
+		}
+		URAT_SEND('\r');
+ 6dc:	8d e0       	ldi	r24, 0x0D	; 13
+ 6de:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 6e2:	e7 ea       	ldi	r30, 0xA7	; 167
+ 6e4:	f1 e6       	ldi	r31, 0x61	; 97
+ 6e6:	31 97       	sbiw	r30, 0x01	; 1
+ 6e8:	f1 f7       	brne	.-4      	; 0x6e6 <main+0x148>
+ 6ea:	00 c0       	rjmp	.+0      	; 0x6ec <main+0x14e>
+ 6ec:	00 00       	nop
+		_delay_ms(100);
+		for(j=0;j<8;j++){
+ 6ee:	a0 92 e0 00 	sts	0x00E0, r10	; 0x8000e0 <j>
+ 6f2:	b0 92 e1 00 	sts	0x00E1, r11	; 0x8000e1 <j+0x1>
+ 6f6:	8a 2d       	mov	r24, r10
+ 6f8:	9b 2d       	mov	r25, r11
+			URAT_SEND(cmd3[j]);
+ 6fa:	fc 01       	movw	r30, r24
+ 6fc:	ea 57       	subi	r30, 0x7A	; 122
+ 6fe:	ff 4f       	sbci	r31, 0xFF	; 255
+ 700:	80 81       	ld	r24, Z
+ 702:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 706:	83 ed       	ldi	r24, 0xD3	; 211
+ 708:	90 e3       	ldi	r25, 0x30	; 48
+ 70a:	01 97       	sbiw	r24, 0x01	; 1
+ 70c:	f1 f7       	brne	.-4      	; 0x70a <main+0x16c>
+ 70e:	00 c0       	rjmp	.+0      	; 0x710 <main+0x172>
+ 710:	00 00       	nop
+			URAT_SEND(cmd2[j]);
+			_delay_ms(50);
+		}
+		URAT_SEND('\r');
+		_delay_ms(100);
+		for(j=0;j<8;j++){
+ 712:	80 91 e0 00 	lds	r24, 0x00E0	; 0x8000e0 <j>
+ 716:	90 91 e1 00 	lds	r25, 0x00E1	; 0x8000e1 <j+0x1>
+ 71a:	01 96       	adiw	r24, 0x01	; 1
+ 71c:	90 93 e1 00 	sts	0x00E1, r25	; 0x8000e1 <j+0x1>
+ 720:	80 93 e0 00 	sts	0x00E0, r24	; 0x8000e0 <j>
+ 724:	88 30       	cpi	r24, 0x08	; 8
+ 726:	91 05       	cpc	r25, r1
+ 728:	44 f3       	brlt	.-48     	; 0x6fa <main+0x15c>
+			URAT_SEND(cmd3[j]);
+			_delay_ms(50);
+		}
+		for(j=0;j<11;j++){
+ 72a:	a0 92 e0 00 	sts	0x00E0, r10	; 0x8000e0 <j>
+ 72e:	b0 92 e1 00 	sts	0x00E1, r11	; 0x8000e1 <j+0x1>
+ 732:	8a 2d       	mov	r24, r10
+ 734:	9b 2d       	mov	r25, r11
+			URAT_SEND(cmd4[j]);
+ 736:	fc 01       	movw	r30, r24
+ 738:	ee 51       	subi	r30, 0x1E	; 30
+ 73a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 73c:	80 81       	ld	r24, Z
+ 73e:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 742:	e3 ed       	ldi	r30, 0xD3	; 211
+ 744:	f0 e3       	ldi	r31, 0x30	; 48
+ 746:	31 97       	sbiw	r30, 0x01	; 1
+ 748:	f1 f7       	brne	.-4      	; 0x746 <main+0x1a8>
+ 74a:	00 c0       	rjmp	.+0      	; 0x74c <main+0x1ae>
+ 74c:	00 00       	nop
+		_delay_ms(100);
+		for(j=0;j<8;j++){
+			URAT_SEND(cmd3[j]);
+			_delay_ms(50);
+		}
+		for(j=0;j<11;j++){
+ 74e:	80 91 e0 00 	lds	r24, 0x00E0	; 0x8000e0 <j>
+ 752:	90 91 e1 00 	lds	r25, 0x00E1	; 0x8000e1 <j+0x1>
+ 756:	01 96       	adiw	r24, 0x01	; 1
+ 758:	90 93 e1 00 	sts	0x00E1, r25	; 0x8000e1 <j+0x1>
+ 75c:	80 93 e0 00 	sts	0x00E0, r24	; 0x8000e0 <j>
+ 760:	8b 30       	cpi	r24, 0x0B	; 11
+ 762:	91 05       	cpc	r25, r1
+ 764:	44 f3       	brlt	.-48     	; 0x736 <main+0x198>
+			URAT_SEND(cmd4[j]);
+			_delay_ms(50);
+		}
+		URAT_SEND('\"');
+ 766:	82 e2       	ldi	r24, 0x22	; 34
+ 768:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 76c:	83 ed       	ldi	r24, 0xD3	; 211
+ 76e:	90 e3       	ldi	r25, 0x30	; 48
+ 770:	01 97       	sbiw	r24, 0x01	; 1
+ 772:	f1 f7       	brne	.-4      	; 0x770 <main+0x1d2>
+ 774:	00 c0       	rjmp	.+0      	; 0x776 <main+0x1d8>
+ 776:	00 00       	nop
+		_delay_ms(50);
+		URAT_SEND('\r');
+ 778:	8d e0       	ldi	r24, 0x0D	; 13
+ 77a:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 77e:	e7 ea       	ldi	r30, 0xA7	; 167
+ 780:	f1 e6       	ldi	r31, 0x61	; 97
+ 782:	31 97       	sbiw	r30, 0x01	; 1
+ 784:	f1 f7       	brne	.-4      	; 0x782 <main+0x1e4>
+ 786:	00 c0       	rjmp	.+0      	; 0x788 <main+0x1ea>
+ 788:	00 00       	nop
+		_delay_ms(100);
+	
+		if(str[0]=='0'){
+ 78a:	f8 01       	movw	r30, r16
+ 78c:	80 81       	ld	r24, Z
+ 78e:	80 33       	cpi	r24, 0x30	; 48
+ 790:	41 f5       	brne	.+80     	; 0x7e2 <main+0x244>
+		//Lcd4_Write_String("Not enough bal!");
+		for(j=0;j<19;j++){
+ 792:	a0 92 e0 00 	sts	0x00E0, r10	; 0x8000e0 <j>
+ 796:	b0 92 e1 00 	sts	0x00E1, r11	; 0x8000e1 <j+0x1>
+ 79a:	8a 2d       	mov	r24, r10
+ 79c:	9b 2d       	mov	r25, r11
+			URAT_SEND(cmd6[j]);
+ 79e:	fc 01       	movw	r30, r24
+ 7a0:	e0 5a       	subi	r30, 0xA0	; 160
+ 7a2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 7a4:	80 81       	ld	r24, Z
+ 7a6:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 7aa:	83 ed       	ldi	r24, 0xD3	; 211
+ 7ac:	90 e3       	ldi	r25, 0x30	; 48
+ 7ae:	01 97       	sbiw	r24, 0x01	; 1
+ 7b0:	f1 f7       	brne	.-4      	; 0x7ae <main+0x210>
+ 7b2:	00 c0       	rjmp	.+0      	; 0x7b4 <main+0x216>
+ 7b4:	00 00       	nop
+		URAT_SEND('\r');
+		_delay_ms(100);
+	
+		if(str[0]=='0'){
+		//Lcd4_Write_String("Not enough bal!");
+		for(j=0;j<19;j++){
+ 7b6:	80 91 e0 00 	lds	r24, 0x00E0	; 0x8000e0 <j>
+ 7ba:	90 91 e1 00 	lds	r25, 0x00E1	; 0x8000e1 <j+0x1>
+ 7be:	01 96       	adiw	r24, 0x01	; 1
+ 7c0:	90 93 e1 00 	sts	0x00E1, r25	; 0x8000e1 <j+0x1>
+ 7c4:	80 93 e0 00 	sts	0x00E0, r24	; 0x8000e0 <j>
+ 7c8:	83 31       	cpi	r24, 0x13	; 19
+ 7ca:	91 05       	cpc	r25, r1
+ 7cc:	44 f3       	brlt	.-48     	; 0x79e <main+0x200>
+			URAT_SEND(cmd6[j]);
+			_delay_ms(50);
+		}
+		URAT_SEND('\r');
+ 7ce:	8d e0       	ldi	r24, 0x0D	; 13
+ 7d0:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 7d4:	e7 ea       	ldi	r30, 0xA7	; 167
+ 7d6:	f1 e6       	ldi	r31, 0x61	; 97
+ 7d8:	31 97       	sbiw	r30, 0x01	; 1
+ 7da:	f1 f7       	brne	.-4      	; 0x7d8 <main+0x23a>
+ 7dc:	00 c0       	rjmp	.+0      	; 0x7de <main+0x240>
+ 7de:	00 00       	nop
+ 7e0:	27 c0       	rjmp	.+78     	; 0x830 <main+0x292>
+		_delay_ms(100);
 		}
 		else{
-		Lcd4_Write_String("Ticket confirmed!");
- 628:	8e e8       	ldi	r24, 0x8E	; 142
- 62a:	90 e0       	ldi	r25, 0x00	; 0
- 62c:	0e 94 89 02 	call	0x512	; 0x512 <Lcd4_Write_String>
+		//Lcd4_Write_String("Ticket confirmed!");
+		for(j=0;j<17;j++){
+ 7e2:	a0 92 e0 00 	sts	0x00E0, r10	; 0x8000e0 <j>
+ 7e6:	b0 92 e1 00 	sts	0x00E1, r11	; 0x8000e1 <j+0x1>
+ 7ea:	8a 2d       	mov	r24, r10
+ 7ec:	9b 2d       	mov	r25, r11
+			URAT_SEND(cmd5[j]);
+ 7ee:	fc 01       	movw	r30, r24
+ 7f0:	ec 58       	subi	r30, 0x8C	; 140
+ 7f2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 7f4:	80 81       	ld	r24, Z
+ 7f6:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 7fa:	83 ed       	ldi	r24, 0xD3	; 211
+ 7fc:	90 e3       	ldi	r25, 0x30	; 48
+ 7fe:	01 97       	sbiw	r24, 0x01	; 1
+ 800:	f1 f7       	brne	.-4      	; 0x7fe <main+0x260>
+ 802:	00 c0       	rjmp	.+0      	; 0x804 <main+0x266>
+ 804:	00 00       	nop
+		URAT_SEND('\r');
+		_delay_ms(100);
+		}
+		else{
+		//Lcd4_Write_String("Ticket confirmed!");
+		for(j=0;j<17;j++){
+ 806:	80 91 e0 00 	lds	r24, 0x00E0	; 0x8000e0 <j>
+ 80a:	90 91 e1 00 	lds	r25, 0x00E1	; 0x8000e1 <j+0x1>
+ 80e:	01 96       	adiw	r24, 0x01	; 1
+ 810:	90 93 e1 00 	sts	0x00E1, r25	; 0x8000e1 <j+0x1>
+ 814:	80 93 e0 00 	sts	0x00E0, r24	; 0x8000e0 <j>
+ 818:	81 31       	cpi	r24, 0x11	; 17
+ 81a:	91 05       	cpc	r25, r1
+ 81c:	44 f3       	brlt	.-48     	; 0x7ee <main+0x250>
+			URAT_SEND(cmd5[j]);
+			_delay_ms(50);
+		}
+		URAT_SEND('\r');
+ 81e:	8d e0       	ldi	r24, 0x0D	; 13
+ 820:	0e 94 cb 02 	call	0x596	; 0x596 <URAT_SEND>
+ 824:	e7 ea       	ldi	r30, 0xA7	; 167
+ 826:	f1 e6       	ldi	r31, 0x61	; 97
+ 828:	31 97       	sbiw	r30, 0x01	; 1
+ 82a:	f1 f7       	brne	.-4      	; 0x828 <main+0x28a>
+ 82c:	00 c0       	rjmp	.+0      	; 0x82e <main+0x290>
+ 82e:	00 00       	nop
+		_delay_ms(100);
 		}
 		//Lcd4_Write_String(str);
 		i=0; 
- 630:	e0 92 a0 00 	sts	0x00A0, r14	; 0x8000a0 <__data_end>
- 634:	f0 92 a1 00 	sts	0x00A1, r15	; 0x8000a1 <__data_end+0x1>
- 638:	ff e3       	ldi	r31, 0x3F	; 63
- 63a:	22 e4       	ldi	r18, 0x42	; 66
- 63c:	8f e0       	ldi	r24, 0x0F	; 15
- 63e:	f1 50       	subi	r31, 0x01	; 1
- 640:	20 40       	sbci	r18, 0x00	; 0
- 642:	80 40       	sbci	r24, 0x00	; 0
- 644:	e1 f7       	brne	.-8      	; 0x63e <main+0xa8>
- 646:	00 c0       	rjmp	.+0      	; 0x648 <main+0xb2>
- 648:	00 00       	nop
+ 830:	a0 92 de 00 	sts	0x00DE, r10	; 0x8000de <__data_end>
+ 834:	b0 92 df 00 	sts	0x00DF, r11	; 0x8000df <__data_end+0x1>
+ 838:	ff e3       	ldi	r31, 0x3F	; 63
+ 83a:	22 e4       	ldi	r18, 0x42	; 66
+ 83c:	8f e0       	ldi	r24, 0x0F	; 15
+ 83e:	f1 50       	subi	r31, 0x01	; 1
+ 840:	20 40       	sbci	r18, 0x00	; 0
+ 842:	80 40       	sbci	r24, 0x00	; 0
+ 844:	e1 f7       	brne	.-8      	; 0x83e <main+0x2a0>
+ 846:	00 c0       	rjmp	.+0      	; 0x848 <main+0x2aa>
+ 848:	00 00       	nop
 		_delay_ms(5000);
 		Lcd4_Set_Cursor(1,1);
- 64a:	61 e0       	ldi	r22, 0x01	; 1
- 64c:	81 e0       	ldi	r24, 0x01	; 1
- 64e:	0e 94 f5 01 	call	0x3ea	; 0x3ea <Lcd4_Set_Cursor>
+ 84a:	61 e0       	ldi	r22, 0x01	; 1
+ 84c:	81 e0       	ldi	r24, 0x01	; 1
+ 84e:	0e 94 f5 01 	call	0x3ea	; 0x3ea <Lcd4_Set_Cursor>
 		Lcd4_Clear();
- 652:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Lcd4_Clear>
+ 852:	0e 94 ee 01 	call	0x3dc	; 0x3dc <Lcd4_Clear>
 		Lcd4_Write_String("Enter card,pls!");
- 656:	8e e6       	ldi	r24, 0x6E	; 110
- 658:	90 e0       	ldi	r25, 0x00	; 0
- 65a:	0e 94 89 02 	call	0x512	; 0x512 <Lcd4_Write_String>
+ 856:	8b ea       	ldi	r24, 0xAB	; 171
+ 858:	90 e0       	ldi	r25, 0x00	; 0
+ 85a:	0e 94 89 02 	call	0x512	; 0x512 <Lcd4_Write_String>
 		str[i]='\0';
- 65e:	e0 91 a0 00 	lds	r30, 0x00A0	; 0x8000a0 <__data_end>
- 662:	f0 91 a1 00 	lds	r31, 0x00A1	; 0x8000a1 <__data_end+0x1>
- 666:	ee 55       	subi	r30, 0x5E	; 94
- 668:	ff 4f       	sbci	r31, 0xFF	; 255
- 66a:	10 82       	st	Z, r1
- 66c:	ac cf       	rjmp	.-168    	; 0x5c6 <main+0x30>
+ 85e:	e0 91 de 00 	lds	r30, 0x00DE	; 0x8000de <__data_end>
+ 862:	f0 91 df 00 	lds	r31, 0x00DF	; 0x8000df <__data_end+0x1>
+ 866:	ea 50       	subi	r30, 0x0A	; 10
+ 868:	ff 4f       	sbci	r31, 0xFF	; 255
+ 86a:	10 82       	st	Z, r1
+ 86c:	b8 ce       	rjmp	.-656    	; 0x5de <main+0x40>
 		Lcd4_Set_Cursor(1,1);
 		Lcd4_Clear();
 		Lcd4_Write_String("Enter card,pls!");*/
 		}
 		if(ok){
 			URAT_RECEIVE();
- 66e:	0e 94 a2 02 	call	0x544	; 0x544 <URAT_RECEIVE>
+ 86e:	0e 94 a2 02 	call	0x544	; 0x544 <URAT_RECEIVE>
 			i++;
- 672:	80 91 a0 00 	lds	r24, 0x00A0	; 0x8000a0 <__data_end>
- 676:	90 91 a1 00 	lds	r25, 0x00A1	; 0x8000a1 <__data_end+0x1>
- 67a:	01 96       	adiw	r24, 0x01	; 1
- 67c:	90 93 a1 00 	sts	0x00A1, r25	; 0x8000a1 <__data_end+0x1>
- 680:	80 93 a0 00 	sts	0x00A0, r24	; 0x8000a0 <__data_end>
- 684:	ba cf       	rjmp	.-140    	; 0x5fa <main+0x64>
+ 872:	80 91 de 00 	lds	r24, 0x00DE	; 0x8000de <__data_end>
+ 876:	90 91 df 00 	lds	r25, 0x00DF	; 0x8000df <__data_end+0x1>
+ 87a:	01 96       	adiw	r24, 0x01	; 1
+ 87c:	90 93 df 00 	sts	0x00DF, r25	; 0x8000df <__data_end+0x1>
+ 880:	80 93 de 00 	sts	0x00DE, r24	; 0x8000de <__data_end>
+ 884:	c7 ce       	rjmp	.-626    	; 0x614 <main+0x76>
+			Lcd4_Write_String("Ticket confirmed!");
+		}
+		for(j=1;j<12;j++){
+			cmd4[j-1]=str[j];
+		}
+		cmd4[11]='\0';
+ 886:	f7 01       	movw	r30, r14
+ 888:	13 86       	std	Z+11, r1	; 0x0b
+		for(j=0;j<2;j++){
+ 88a:	a0 92 e0 00 	sts	0x00E0, r10	; 0x8000e0 <j>
+ 88e:	b0 92 e1 00 	sts	0x00E1, r11	; 0x8000e1 <j+0x1>
+ 892:	8a 2d       	mov	r24, r10
+ 894:	9b 2d       	mov	r25, r11
+ 896:	e3 ce       	rjmp	.-570    	; 0x65e <main+0xc0>
 
-00000686 <_exit>:
- 686:	f8 94       	cli
+00000898 <_exit>:
+ 898:	f8 94       	cli
 
-00000688 <__stop_program>:
- 688:	ff cf       	rjmp	.-2      	; 0x688 <__stop_program>
+0000089a <__stop_program>:
+ 89a:	ff cf       	rjmp	.-2      	; 0x89a <__stop_program>
