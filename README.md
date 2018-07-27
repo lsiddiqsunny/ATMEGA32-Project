@@ -10,7 +10,7 @@ Nadia Anjum Antara<br>
 -----------------
 ### project Idea (In short)
 -----------------
-An automated ticketing system for materail in Bangladesh.<br>
+An automated ticketing system for metrorail in Bangladesh.<br>
 ### Motivation
 -----------------
 In Bangladesh, people have to buy ticket queued in a long line. This is just waste of valuable time. Moreover, if you are in hurry, it may be brother you. This project will make the ticket buying system easier.<br>
