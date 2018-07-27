@@ -10,7 +10,7 @@ Nadia Anjum Antara<br>
 -----------------
 ### project Idea (In short)
 -----------------
-An automated ticketing system for material in Bangladesh.<br>
+An automated ticketing system for materail in Bangladesh.<br>
 ### Motivation
 -----------------
 In Bangladesh, people have to buy ticket queued in a long line. This is just waste of valuable time. Moreover, if you are in hurry, it may be brother you. This project will make the ticket buying system easier.<br>
@@ -28,7 +28,7 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 ">RFID Card (125KHz) </a>
 2. <a href="https://www.techshopbd.com/product-categories/rf/2402/125khz-rfid-module-uart-low-price-edition-techshop-bangladesh"> 125Khz RFID Module - UART(Low price edition) </a>
 3. <a href="https://www.techshopbd.com/product-categories/wifi/2583/esp8266-esp-01-wifi-module-techshop-bangladesh
-">ESP8266 ESP-01 Wifi Module </a>
+">ESP8266 ESP-NodeMCU Wifi Module </a>
 4. <a href="https://www.techshopbd.com/product-categories/eval-board/2041/sim900a-kit-techshop-bangladesh"> SIM900A kit </a><br>
 
 ### Required Softwares
@@ -43,7 +43,7 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 2. Receive Data from Arduino to ATMEGA32 - Done
 3. Send and Receive Data Between Two ATMEGA32 - Done
 4. Read RFID data -Done
-5. communicate with server by ESP8266 -Done
+5. Communicate with server by ESP8266 -Done
 6. Send RFID data to server -Done
 7. Connect to data base , modify  and take acknowledgement -Done
 8. Send acknowledgement to ATMEGA32 -Done
