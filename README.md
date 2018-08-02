@@ -19,7 +19,7 @@ In Bangladesh, people have to buy ticket queued in a long line. This is just was
 
 In this project, we are going to build a ticketing system for Metrorail in our country. Every traveler should have an <b>RFID card</b>. This unique id card will determine the balance and information of the owner. He/ She can refill the balance whenever they want (maybe via Bkash or Rocket). <br>
 
-We maintain travelers’ information in a database. Every Metrorail have a microcontroller-based <b>RFID based checking system</b>. When a traveler comes and shows his RFID card, it checks via <b>WIFI module</b> if he has balance or not. If there is enough balance, he can enter the train. If there is not enough balance, he cannot enter the train before refilling. We send massage via <b><br>
+We maintain travelers’ information in a database. Every Metrorail have a microcontroller-based <b>RFID based checking system</b>. When a traveler comes and shows his RFID card, it checks via <b>WIFI module</b> if he has balance or not. If there is enough balance, he can enter the train. If there is not enough balance, he cannot enter the train before refilling. We send massage via <b> SIM900A kit</b>.<br>
 
 <a href="https://github.com/lsiddiqsunny/ATMEGA32-Project/blob/master/Extra%20Files/Metrorail%20Ticketing.pptx">  Presentation Slide </a><br>
 ### Required Hardwares
@@ -55,5 +55,4 @@ We maintain travelers’ information in a database. Every Metrorail have a micro
 -----------------
 ### Demonstration Video
 -----------------
-1.<a href="https://gifs.com/gif/communicate-between-two-atmega32-qYkw93"><b>Communication between two ATMEGA32</b></a><br>
-2.<a href="https://gifs.com/gif/esp8266-nodemcu-controlling-led-from-server-APLMV7"><b>Controlling Led from server</b></a>
+<a href="https://www.youtube.com/watch?v=X1Xj-NGnFCQ&feature=youtu.be">Metrorail Ticketing </a>
