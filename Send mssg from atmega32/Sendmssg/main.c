@@ -24,19 +24,20 @@ int j;
 
 unsigned char cmd1[]={"AT"};
 unsigned char cmd2[]={"AT+CMGF=1"};
-unsigned char cmd3[]={"AT+CMGS=\""};
+unsigned char cmd3[]={"AT+CMGS=\"+88"};
 unsigned char cmd4[20];
 unsigned char cmd5[]={"Ticket confirmed."};
 unsigned char cmd6[]={"Not enough balance."};
+unsigned char cmd7[]={"RUN"};
 
 void URAT_SETUP(){
 	
-	UCSRA = 0b00000010;  // Single speed
+	UCSRA = 0b00000010;  // Double speed
 	UCSRB = 0b00011000;  // Enable Tx and Rx, polling
 	UCSRC = 0b10000110;  // Asynchronous mode, no parity, 1 stop bit,8 data bits
 	
 	UBRRH = 0x00;
-	UBRRL = 12; // Baud rate 1200bps, assuming 1MHz clock
+	UBRRL = 12; // Baud rate 9600bps, assuming 1MHz clock
 
 }
 
@@ -115,19 +116,21 @@ int main(void)
 			cmd4[j-1]=str[j];
 		}
 		cmd4[11]='\0';
+		
 		for(j=0;j<2;j++){
 			URAT_SEND(cmd1[j]);
 			_delay_ms(50);
-		}
+	}
 		URAT_SEND('\r');
-		_delay_ms(100);
+		_delay_ms(1000);
 		for(j=0;j<9;j++){
 			URAT_SEND(cmd2[j]);
 			_delay_ms(50);
-		}
+	}
 		URAT_SEND('\r');
-		_delay_ms(100);
-		for(j=0;j<8;j++){
+		_delay_ms(1000);
+		
+		for(j=0;j<12;j++){
 			URAT_SEND(cmd3[j]);
 			_delay_ms(50);
 		}
@@ -138,26 +141,37 @@ int main(void)
 		URAT_SEND('\"');
 		_delay_ms(50);
 		URAT_SEND('\r');
-		_delay_ms(100);
-	
+		_delay_ms(1000);
+		
 		if(str[0]=='0'){
 		//Lcd4_Write_String("Not enough bal!");
 		for(j=0;j<19;j++){
 			URAT_SEND(cmd6[j]);
 			_delay_ms(50);
 		}
+		URAT_SEND(0x1a);
+		_delay_ms(50);
 		URAT_SEND('\r');
-		_delay_ms(100);
+		_delay_ms(1000);
 		}
 		else{
 		//Lcd4_Write_String("Ticket confirmed!");
 		for(j=0;j<17;j++){
 			URAT_SEND(cmd5[j]);
 			_delay_ms(50);
-		}
+	}URAT_SEND(0x1a);
+	_delay_ms(50);
 		URAT_SEND('\r');
-		_delay_ms(100);
+		_delay_ms(1000);
+		
 		}
+		for(j=0;j<3;j++){
+			URAT_SEND(cmd7[j]);
+			_delay_ms(50);
+	}
+		URAT_SEND('\r');
+		_delay_ms(1000);
+		
 		//Lcd4_Write_String(str);
 		i=0; 
 		_delay_ms(5000);

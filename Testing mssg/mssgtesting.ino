@@ -1,5 +1,5 @@
 #include<SoftwareSerial.h>
-SoftwareSerial GPRS(7,8)
+SoftwareSerial GPRS(7,8);
 
 unsigned char buffer[64];
 int count=0;
@@ -7,6 +7,7 @@ int count=0;
 void setup() {
 GPRS.begin(9600);
 Serial.begin(9600);
+Serial.write("Hello\n");
 }
 
 void loop() {
@@ -16,10 +17,11 @@ while(GPRS.available()){
 }
 Serial.write(buffer,count);
 count=0;
-for(int i=0;i<64;i++) buffer='\0';
+for(int i=0;i<64;i++) buffer[i]='\0';
 
 if(Serial.available()){
   byte b=Serial.read();
+  Serial.write(b);
   if(b=='*'){
     GPRS.write(0x1a);
   }

@@ -7,11 +7,11 @@
 #include <SoftwareSerial.h>
 
 /* Set these to your desired credentials. */
-const char *ssid = "Net Buzz @ Sunny WiFi";  //ENTER YOUR WIFI SETTINGS
-const char *password = "01817661097 ";
+const char *ssid = "Sunny";  //ENTER YOUR WIFI SETTINGS
+const char *password = "sunnysunny";
 
 //Web/Server address to read/write from 
-const char *host = "192.168.0.104";   
+const char *host = "192.168.43.58";   
 
 SoftwareSerial mySerial(12, 13); // RX, TX
 char data[15];
@@ -69,7 +69,7 @@ void loop() {
   HTTPClient http;    //Declare object of class HTTPClient
 
   String postData;
-  String link=String("http://192.168.0.104/Test/postdemo.php?id=")+data;
+  String link=String("http://192.168.43.58/Test/postdemo.php?id=")+data;
   
   http.begin(link);              //Specify request destination
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");    //Specify content-type header
