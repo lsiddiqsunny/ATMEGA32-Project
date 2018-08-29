@@ -1,13 +1,23 @@
 # ATMEGA32-Project
 ### Project Name
 -----------------
-<b>Metrorail Tickiting</b><br>
+**Metrorail Tickiting**<br>
 ### Contributor
 -----------------
-Mohammed Latif Siddiq Sunny<br>
-Nadia Anjum Antara<br>
+**Mohammed Latif Siddiq Sunny** <br>
+
+**Nadia Anjum Antara**<br>
 ### Supervisor
 -----------------
+**Abdus Salam Azad** <br>
+Asst. Prof, CSE, BUET
+
+**Nazmus Saquib** <br>
+Lecturer, CSE, BUET
+
+**Muhammad Ali Nayeem** <br>
+Asst. Prof, CSE, BUET
+
 ### project Idea (In short)
 -----------------
 An automated ticketing system for metrorail in Bangladesh.<br>
